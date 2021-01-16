@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Sort>
+    <ID>00000000-0000-0000-0000-000000000000</ID>
+    <SortName>bookapi</SortName>
+    <EndpointID>57f5b698-d544-47bf-825c-5c938850f156</EndpointID>
+    <RequestSorts>0</RequestSorts>
+  </Sort>
+  <Sort>
+    <ID>00000000-0000-0000-0000-000000000000</ID>
+    <SortName>bookapi</SortName>
+    <EndpointID>3554e2c9-084e-4d53-8308-56d8a7329ff7</EndpointID>
+    <RequestSorts>1</RequestSorts>
+  </Sort>
+  <Sort>
+    <ID>00000000-0000-0000-0000-000000000000</ID>
+    <SortName>bookapi</SortName>
+    <EndpointID>cc086e99-fec2-45e7-b484-d07a592284d3</EndpointID>
+    <RequestSorts>2</RequestSorts>
+  </Sort>
+</ArrayOfSort>

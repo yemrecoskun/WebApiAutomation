@@ -1,0 +1,82 @@
+﻿@using WebApiAutomation.Models;
+@{
+    FastpayToolsEntities fastpayTools = new FastpayToolsEntities();
+}
+
+<html>
+<head>
+    <link href="~/Content/w3.css" rel="stylesheet" />
+    <script src="~/Scripts/EndpointList.js"></script>
+</head>
+<body>
+    <main>
+        <table class="table table-striped" id="sortTable">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Endpoint</th>
+                    <th scope="col">Request</th>
+                    <th scope="col">Header</th>
+                    <th scope="col">RequestType</th>
+                    <th scope="col">Action</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            @foreach (var item in fastpayTools.EndpointTable.ToList())
+            {
+                <tbody id="@item.Id">
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.EndPoint</td>
+                        <td>@item.Request</td>
+                        <td>@item.Header</td>
+                        <td>@item.RequestType</td>
+                        <td>@item.Action</td>
+                        <td><button class="endpointDeleteBtn" id="@item.Id">Delete</button><button class="endpointUpdateBtn" id="@item.Id">Update</button></td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+
+        <div id="updateendpoint" class="w3-modal">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span id="CloseModal" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Update Endpoint</h2>
+                    <h2 id="EndpointId"></h2>
+                </header>
+                <div class="w3-container">
+                    <br />
+                    <label>ServiceName</label>
+                    <input type="text" class="form-control" id="ServiceName" placeholder="exam: http://www.abc.com" />
+                    <label>RequestType</label>
+                    <select class="form-control" id="RequestType">
+                        <option value="0">GET</option>
+                        <option value="1">POST</option>
+                    </select>
+                    <label>EndPoint</label>
+                    <input type="text" class="form-control" id="EndPoint" placeholder="exam: /api/..." />
+                    <label>Header (Json Format)</label>
+                    <textarea type="text" class="form-control" id="Header" placeholder="Header Json">{
+"": ""
+}</textarea>
+                    <label>Request (Json Format)</label>
+                    <textarea type="text" class="form-control" id="Request" placeholder="Request Json">{
+"": ""
+}</textarea>
+                    <label>Action</label>
+                    <input type="text" class="form-control" id="Action" placeholder="exam: GetToken" />
+                    <br />
+                </div>
+                <footer class="w3-container">
+                    <center>
+                        <button type="button" class="btn btn-sm btn-outline-primary my-2" id="UpdateEndpoint">Update</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary my-2" id="CloseModalBtn">Cancel</button>
+                    </center>
+                </footer>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

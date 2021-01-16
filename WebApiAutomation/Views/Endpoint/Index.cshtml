@@ -1,0 +1,139 @@
+﻿@using WebApiAutomation.Models;
+@{
+    FastpayToolsEntities fastpayTools = new FastpayToolsEntities();
+}
+
+<html>
+<head>
+    <link href="~/Content/endpoint.css" rel="stylesheet" />
+    <link href="~/Content/w3.css" rel="stylesheet" />
+    <script src="~/Scripts/endpoint.js"></script>
+</head>
+<body>
+    <main role="main">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <a href="~/Endpoint/EndpointList" class="btn btn-outline-primary my-2" target="_blank">Endpoint</a>
+                <button type="button" class="btn btn-outline-primary my-2" id="addEndpointModal">Add Endpoint</button>
+                <button type="button" class="btn btn-outline-primary my-2" id="addSortModal">Add Sort</button>
+                <a href="~/Endpoint/SortList" class="btn btn-outline-primary my-2" target="_blank">Sort</a>
+                <h1>Sort</h1>
+                <select class="form-control" id="sort">
+                    @foreach (var item in fastpayTools.Sort.OrderBy(s => s.SortName).Select(s => s.SortName).Distinct().ToList())
+                    {
+                        <option value="@item">@item</option>
+                    }
+                </select>
+                <h1>Endpoint</h1>
+                <select class="form-control" id="SelectEndpoint">
+                    @foreach (var item in fastpayTools.EndpointTable.Select(s => new { s.Action , s.Id,s.EndPoint}).ToList())
+                    {
+                        <option value="@item.Id">@item.Action - @item.EndPoint</option>
+                    }
+                </select>
+                <button type="button" class="btn btn-outline-primary my-2" id="openSortBtn">Open Sort</button>
+                <button type="button" class="btn btn-outline-primary my-2" id="openEndpointBtn">Open Endpoint</button>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container" id="sortContainer">
+
+            </div>
+        </div>
+        <!-- Modal -->
+        <div id="addendpoint" class="w3-modal">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span id="CloseModal" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Add Endpoint</h2>
+                </header>
+                <div class="w3-container">
+                    <br />
+                    <label>ServiceName</label>
+                    <input type="text" class="form-control" id="ServiceName" placeholder="exam: http://www.abc.com" />
+                    <label>RequestType</label>
+                    <select class="form-control" id="RequestType">
+                        <option value="0">GET</option>
+                        <option value="1">POST</option>
+                    </select>
+                    <label>EndPoint</label>
+                    <input type="text" class="form-control" id="EndPoint" placeholder="exam: /api/..." />
+                    <label>Header (Json Format)</label>
+                    <textarea type="text" class="form-control" id="Header" placeholder="Header Json">{
+"": ""
+}</textarea>
+                    <label>Request (Json Format)</label>
+                    <textarea type="text" class="form-control" id="Request" placeholder="Request Json">{
+"": ""
+}</textarea>
+                    <label>Action</label>
+                    <input type="text" class="form-control" id="Action" placeholder="exam: GetToken" />
+                    <br />
+                </div>
+                <footer class="w3-container">
+                    <center>
+                        <button type="button" class="btn btn-sm btn-outline-primary  my-2" id="endpointBtn">Add</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary my-2" id="CloseModalBtn">Exit</button>
+                    </center>
+                </footer>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="addsort" class="w3-modal">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span id="closeaddsortmodal" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Sort Modal</h2>
+                </header>
+                <div class="w3-container">
+                    <br />
+                    <select class="btn-outline-primary" id="endpointaddtosort">
+                        @foreach (var item in fastpayTools.EndpointTable.Select(s => new { s.Action, s.Id }).ToList().OrderBy(s=>s.Action))
+                        {
+                            <option value="@item.Id">@item.Action</option>
+                        }
+                    </select>
+                    <input type="text" class="btn-outline-primary" placeholder="Sort Name" id="addSortName" />
+                    <small><button class="btn-outline-primary" id="addEndpointBtn">+</button></small>
+                    <br />
+                    <table class="table table-striped" id="sortTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Endpoint</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <footer class="w3-container">
+                    <center>
+                        <button type="button" class="btn btn-sm btn-outline-primary  my-2" id="addSortBtn">Add</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary  my-2" id="closeAddSortModalBtn">Exit</button>
+                    </center>
+                </footer>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="messageModal" class="w3-modal w3-animate-opacity">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span id="messageModalClose"
+                          class="w3-button w3-large w3-display-topright">&times;</span>
+                    <h2>Message</h2>
+                </header>
+                <div class="w3-container">
+                    <textarea class="messagetextarea" id="message"></textarea>
+                </div>
+                <footer class="w3-container w3-teal">
+                    <p></p>
+                </footer>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

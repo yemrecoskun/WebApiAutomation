@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfEndpointTable xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EndpointTable>
+    <Id>57f5b698-d544-47bf-825c-5c938850f156</Id>
+    <ServiceName>https://localhost:44348/</ServiceName>
+    <EndPoint>/api/books/2</EndPoint>
+    <Request />
+    <Header>{
+"Content-Type": "application/json"
+}</Header>
+    <Response>{
+  "id": 2,
+  "name": "Tarih",
+  "numberOfBookOfInterests": 3,
+  "bookOfInterests": [
+    {
+      "id": 1,
+      "name": "Barbarossa",
+      "author": "İskender Pala"
+    },
+    {
+      "id": 2,
+      "name": "Home Deus",
+      "author": "Noah Harrari"
+    },
+    {
+      "id": 3,
+      "name": "Sultanın Korsanları",
+      "author": "Emrah Safa"
+    }
+  ]
+}</Response>
+    <CreateDate>2021-01-15T20:50:30.8759168+03:00</CreateDate>
+    <ModifiedDate>2021-01-15T20:50:30.8759168+03:00</ModifiedDate>
+    <IsDeleted />
+    <RequestType>0</RequestType>
+    <Action>Book </Action>
+    <Sort />
+  </EndpointTable>
+  <EndpointTable>
+    <Id>3554e2c9-084e-4d53-8308-56d8a7329ff7</Id>
+    <ServiceName>https://localhost:44348</ServiceName>
+    <EndPoint>/api/books</EndPoint>
+    <Request />
+    <Header>{
+"Content-Type": "application/json"
+}</Header>
+    <Response>[
+  {
+    "id": 0,
+    "name": "Macera",
+    "numberOfBookOfInterests": 3,
+    "bookOfInterests": [
+      {
+        "id": 1,
+        "name": "Kuantum Casusu",
+        "author": "David"
+      },
+      {
+        "id": 2,
+        "name": "Sahte Krallık",
+        "author": "Sardugo"
+      },
+      {
+        "id": 3,
+        "name": "Yaşam Sinyali",
+        "author": "Jose Rodrigues"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Korku",
+    "numberOfBookOfInterests": 3,
+    "bookOfInterests": [
+      {
+        "id": 1,
+        "name": "Gölgeler",
+        "author": "Jack London"
+      },
+      {
+        "id": 2,
+        "name": "Cinayet Şirketi",
+        "author": "Jack London"
+      },
+      {
+        "id": 3,
+        "name": "Ruh Kırıcı",
+        "author": "Sebastian"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Tarih",
+    "numberOfBookOfInterests": 3,
+    "bookOfInterests": [
+      {
+        "id": 1,
+        "name": "Barbarossa",
+        "author": "İskender Pala"
+      },
+      {
+        "id": 2,
+        "name": "Home Deus",
+        "author": "Noah Harrari"
+      },
+      {
+        "id": 3,
+        "name": "Sultanın Korsanları",
+        "author": "Emrah Safa"
+      }
+    ]
+  }
+]</Response>
+    <CreateDate>2021-01-15T20:52:08.4449245+03:00</CreateDate>
+    <ModifiedDate>2021-01-15T20:52:08.4449245+03:00</ModifiedDate>
+    <IsDeleted />
+    <RequestType>0</RequestType>
+    <Action>Book - BookList</Action>
+    <Sort />
+  </EndpointTable>
+  <EndpointTable>
+    <Id>cc086e99-fec2-45e7-b484-d07a592284d3</Id>
+    <ServiceName>https://localhost:44348/</ServiceName>
+    <EndPoint>/api/books/author/Sebastian</EndPoint>
+    <Request />
+    <Header>{ "Content-Type": "application/json"}</Header>
+    <Response>{
+  "id": 3,
+  "name": "Ruh Kırıcı",
+  "author": "Sebastian"
+}</Response>
+    <CreateDate>2021-01-15T20:53:01.9750686+03:00</CreateDate>
+    <ModifiedDate>2021-01-15T20:53:01.9750686+03:00</ModifiedDate>
+    <IsDeleted />
+    <RequestType>0</RequestType>
+    <Action>Books-Book value</Action>
+    <Sort />
+  </EndpointTable>
+</ArrayOfEndpointTable>

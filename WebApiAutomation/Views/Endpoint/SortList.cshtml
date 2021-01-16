@@ -1,0 +1,70 @@
+﻿@using WebApiAutomation.Models;
+@{
+    FastpayToolsEntities fastpayTools = new FastpayToolsEntities();
+}
+
+<html>
+<head>
+    <link href="~/Content/w3.css" rel="stylesheet" />
+    <script src="~/Scripts/SortList.js"></script>
+</head>
+<body>
+    <main>
+        <table class="table table-striped" id="sortTable">
+            <thead>
+                <tr>
+                    <th scope="col">SortName</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            @foreach (var item in fastpayTools.Sort.OrderBy(i => i.SortName).Select(i => i.SortName).Distinct().ToList())
+            {
+                <tbody id="@item">
+                    <tr>
+                        <td>@item</td>
+                        <td><button class="sortDeleteBtn" id="@item">Delete</button><button class="sortUpdateBtn" id="@item">Update</button></td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+
+        <div id="updatesort" class="w3-modal">
+            <div class="w3-modal-content w3-card-4">
+                <header class="w3-container w3-teal">
+                    <span id="closeupdatesortmodal" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Sort Modal</h2>
+                </header>
+                <div class="w3-container">
+                    <br />
+                    <select class="btn-outline-primary " id="endpointaddtosort">
+                        @foreach (var item in fastpayTools.EndpointTable.Select(s => new { s.Action, s.Id }).Distinct().ToList().OrderBy(s => s.Action))
+                        {
+                            <option value="@item.Id">@item.Action</option>
+                        }
+                    </select>
+                    <input type="text" class="btn-outline-primary" placeholder="Sort Name" id="updateSortName" />
+                    <small><button class="btn-outline-primary" id="addEndpointBtn">+</button></small>
+                    <br />
+                    <table class="table table-striped" id="endTable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Endpoint</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                <footer class="w3-container">
+                    <center>
+                        <button type="button" class="btn btn-sm btn-outline-primary  my-2" id="UpdateButton">Update</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary  my-2" id="CloseModalBtn">Cancel</button>
+                    </center>
+                </footer>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+

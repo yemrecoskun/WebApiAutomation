@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/layout.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/layout.js"></script>
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-12 column3">
+                    <img src="~/img/terminal.png" />
+                    <img src="~/img/trash.png" id="clearBtn" />
+                    <h2>Console Output</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-sm-6 col-md-12 column4">
+                    <div class="form-content" id="console">
+                        <br />
+                    </div>
+                </div>
+            </div>
+            <p>
+                &copy; @DateTime.Now.Year - InterTech fastpay Tools
+            </p>
+        </footer>
+    </div>
+    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button">▲</a>
+</body>
+</html>
